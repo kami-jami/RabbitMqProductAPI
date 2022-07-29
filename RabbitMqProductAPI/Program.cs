@@ -1,6 +1,14 @@
+using RabbitMqProductAPI.Data;
+using RabbitMqProductAPI.RabbitMQ;
+using RabbitMqProductAPI.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddDbContext<DbContextClass>();
+builder.Services.AddScoped<IRabitMQProducer, RabitMQProducer>();
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
